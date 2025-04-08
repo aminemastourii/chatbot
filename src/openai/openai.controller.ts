@@ -6,9 +6,9 @@ import { OpenaiService } from './openai.service';
 export class OpenaiController {
     constructor(private readonly openaiService: OpenaiService) {}
 
-    @Post('ChatCompletion')
+    @Post('chatCompletion')
     async chatCompletion(@Body()body : CreateChatCompletionRequest) {
 
-       this.openaiService.createChatCompletion(body.messages);
+       return this.openaiService.createChatCompletion(body.messages);
     }
 }

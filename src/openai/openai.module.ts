@@ -7,10 +7,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
   imports: [ConfigModule],
   controllers: [OpenaiController],
-  providers: [OpenaiService,{
+  providers: [OpenaiService,
+    {
     provide:OpenAI,
     useFactory: (configService: ConfigService) => {
-       new OpenAI({
+       return new OpenAI({
         apiKey: configService.getOrThrow('OPENAI_API_KEY'),
       });
     },
